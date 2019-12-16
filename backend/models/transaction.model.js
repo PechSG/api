@@ -16,7 +16,7 @@ const transactionSchema = new Schema({
         required: true
     },
     code: {
-        type: String, 
+        type: String, // deposit, withdraw, takeout loan, payback loan, interest pay, interest gain
         trim: true,
         required: true
     },
@@ -25,7 +25,7 @@ const transactionSchema = new Schema({
         trim: true,
         required: true
     },
-    approved: {
+    approved: { 
         type: Boolean,
         required: true,
         default: false

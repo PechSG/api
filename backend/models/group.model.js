@@ -44,11 +44,6 @@ const groupSchema = new Schema({
         type: Number,
         required: true
     },
-    totalBalance:{
-        type: Number,
-        required: true,
-        default: 0
-    },
     currentBalance: {
         type: Number
     },
@@ -78,7 +73,7 @@ const groupSchema = new Schema({
     },
     loans: {
         type: Array
-    }
+    },
 }, {
     timestamps: true,
 });

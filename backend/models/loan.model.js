@@ -19,28 +19,36 @@ const LoanSchema = new Schema({
         type: Number,
         required: true
     },
-    loanPlan: {
-        type: String,
-        required: true
-    },
-    loanPayment: {
+    loanPayment: { //loan with total interest
         type: Number,
         required: true
     },
     loanPaid: [{
         transactionId: {
-            type: ObjectId,
-            amount: Number
-        }
+            type: ObjectId
+        },
+        amount: Number
     }],
-    loanTerm: {
+    loanInterestPaid: [{
+        transactionId: ObjectId,
+        amount: Number
+    }],
+    loanTerm: { 
         type: String
     },
-    
-    
+    loanNumberOfStatement: {
+        type: Number
+    },
+    loanPurpose: {
+        type: String,
+        required: true
+    },
+    loanPaymentPlan: {
+        type: String, //monthly weekly
+        default: "monthly"
+    }   
 }, {
     timestamps: true,
-
 });
 
 const Loan = mongoose.model('Loan', LoanSchema);

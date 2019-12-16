@@ -21,6 +21,9 @@ const AccountSchema = new Schema({
     },
     accountType: {
         type: String
+    },
+    loans: {
+        type: Array
     }
 }, {
     timestamps: true,
