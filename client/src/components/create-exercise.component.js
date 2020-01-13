@@ -3,7 +3,7 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-export default class CreateExercise extends Component {
+export default class LoginUser extends Component {
   constructor(props) {
     super(props);
 
@@ -74,7 +74,7 @@ export default class CreateExercise extends Component {
 
     console.log(exercise);
 
-    axios.post('http://localhost:5000/exercises/add', exercise)
+    axios.post('http://localhost:5000/login', exercise)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -83,44 +83,28 @@ export default class CreateExercise extends Component {
   render() {
     return (
     <div>
-      <h3>Create New Exercise Log</h3>
+      <h3>Login</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
-          <label>Username: </label>
-          <select ref="userInput"
-              required
-              className="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}>
-              {
-                this.state.users.map(function(user) {
-                  return <option 
-                    key={user}
-                    value={user}>{user}
-                    </option>;
-                })
-              }
-          </select>
+          <label>Phone Number: </label>
+          <input  type="number"
+                required
+                className="form-control"
+                name="phoneNumber"
+                value={this.state.last}
+                onChange={this.onChangeUsername}
+                />
         </div>
         <div className="form-group"> 
-          <label>Description: </label>
-          <input  type="text"
-              required
-              className="form-control"
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-              />
-        </div>
-        <div className="form-group">
-          <label>Duration (in minutes): </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.duration}
-              onChange={this.onChangeDuration}
-              />
-        </div>
-        <div className="form-group">
+            <label>Password: </label>
+            <input  type="password"
+                required
+                className="form-control"
+                value={this.state.password}
+                onChange={this.onChangeUsername}
+                />
+          </div> 
+        {/* <div className="form-group">
           <label>Date: </label>
           <div>
             <DatePicker
@@ -128,10 +112,10 @@ export default class CreateExercise extends Component {
               onChange={this.onChangeDate}
             />
           </div>
-        </div>
+        </div> */}
 
         <div className="form-group">
-          <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Login" className="btn btn-primary" />
         </div>
       </form>
     </div>
