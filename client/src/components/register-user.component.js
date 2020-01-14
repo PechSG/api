@@ -9,41 +9,63 @@ export default class RegisterUser extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: ''
+      first: '',
+      last: '',
+      phoneNumber: 0,
+      sex: '',
+      password: '',
+      passwordConf: '',
+      address: '',
+      fammem: 0
     }
   }
 
   onChangeUsername(e) {
+    console.log(e.target.name)
+    console.log(e.target.value)
     this.setState({
-      username: e.target.value
+      [e.target.name]: e.target.value
     })
+    // if (e.target.name == "first") {
+    //   this.setState({first: e.target.value})
+    // } 
   }
 
+  // onChangeSelect(e) {
+  //   console.log(e.target.name)
+  //   console.log(e.target.value)
+  //   this.setState({
+  //     sex: e.target.value
+  //   })
+  //   // if (e.target.name == "first") {
+  //   //   this.setState({first: e.target.value})
+  //   // } 
+  // }
+
   onSubmit(e) {
+    var data = {
+      first: this.state.first,
+      last: this.state.last,
+      sex: this.state.sex,
+      phoneNumber: this.state.phoneNumber,
+      password: this.state.password,      
+      passwordConf: this.state.passwordConf,
+      address: this.state.address,
+      dateofbirth: this.state.address,
+      fammem: this.state.fammem,
+    }
+    console.log(data)
     axios({
       method: 'post',
-      url: '/api/register',
-      data: {
-        first: this.state.first,
-        last: this.state.last,
-        sex: this.state.sex,
-
-      }
+      url: 'http://pichsaving.herokuapp.com/api/register',
+      data: data
+    }).then(function (response) {
+      console.log(response.data)
     });
+
     e.preventDefault();
 
-    const user = {
-      username: this.state.username
-    }
-
-    console.log(user);
-
-    axios.post('http://localhost:5000/users/add', user)
-      .then(res => console.log(res.data));
-
-    this.setState({
-      username: ''
-    })
+   
   }
 
   render() {
@@ -74,11 +96,23 @@ export default class RegisterUser extends Component {
           </div>
 
           <div className="form-group"> 
+            <label>Date of Birth: </label>
+            <input  type="date"
+                required
+                className="form-control"
+                name="dateofbirth"
+                value={this.state.dateofbirth}
+                onChange={this.onChangeUsername}
+                />
+          </div>
+
+          <div className="form-group"> 
             <label>Sex:  </label>
-            <select className="form-control">
-              <option value={this.state.sex}>Female</option>
-              <option value={this.state.sex}>Male</option>
-              <option value={this.state.sex}>Prefer not to say</option>
+            <select className="form-control" name="sex" onChange={this.onChangeUsername}>
+            <option value=""></option>
+              <option value="f">Female</option>
+              <option value="m">Male</option>
+              <option value="na">Prefer not to say</option>
             </select>
           </div>
           <div className="form-group"> 
@@ -86,15 +120,40 @@ export default class RegisterUser extends Component {
             <input  type="number"
                 required
                 className="form-control"
+                name="phoneNumber"
                 value={this.state.phoneNumber}
                 onChange={this.onChangeUsername}
                 />
           </div>
+
+          <div className="form-group"> 
+            <label>Address: </label>
+            <input  type="text"
+                required
+                className="form-control"
+                name="address"
+                value={this.state.address}
+                onChange={this.onChangeUsername}
+                />
+          </div>
+
+          <div className="form-group"> 
+            <label>Family Members: </label>
+            <input  type="number"
+                required
+                className="form-control"
+                name="fammem"
+                value={this.state.fammem}
+                onChange={this.onChangeUsername}
+                />
+          </div>
+
           <div className="form-group"> 
             <label>Password: </label>
             <input  type="password"
                 required
                 className="form-control"
+                name="password"
                 value={this.state.password}
                 onChange={this.onChangeUsername}
                 />
@@ -104,9 +163,10 @@ export default class RegisterUser extends Component {
             <input  type="password"
                 required
                 className="form-control"
-                value={this.state.passwordconfirm}
+                name="passwordConf"
+                value={this.state.passwordConf}
                 onChange={this.onChangeUsername}
-                />
+                /> 
           </div>
           <div className="form-group">
             <input type="submit" value="Create User" className="btn btn-primary" />
