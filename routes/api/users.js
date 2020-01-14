@@ -14,7 +14,7 @@ router.get('/users/all', ensureLoggedIn, (req, res) => {
 
 router.route('/register').post((req, res) => {
     // get value from post body
-    const { first, last, phoneNumber, password, passwordConf,  birthDate, sex, profilePicUrl, houseNum, streetNum, village, commune, district, province } = req.body;
+    const { first, last, phoneNumber, password, passwordConf,  birthDate, sex, profilePicUrl, streetNum, village, commune, district, province } = req.body;
     console.log("hello")
     if (!phoneNumber || !password || !passwordConf  || !first || !last) {
         return res.status(400).json({msg: "Please enter required fields!"})

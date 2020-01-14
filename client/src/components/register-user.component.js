@@ -80,7 +80,7 @@ export default class RegisterUser extends Component {
                 required
                 className="form-control"
                 name="first"
-                value={this.state.first}
+                value={this.state.first}  
                 onChange={this.onChangeUsername}
                 />
           </div>
@@ -132,9 +132,42 @@ export default class RegisterUser extends Component {
             <input  type="text"
                 required
                 className="form-control"
-                name="address"
-                value={this.state.address}
+                name="streetNum"
+                value={this.state.streetNum}
                 onChange={this.onChangeUsername}
+                placeholder="Street Number"
+                />   
+            <input  type="text"
+                required
+                className="form-control"
+                name="village"
+                value={this.state.village}
+                onChange={this.onChangeUsername}
+                placeholder="Village"
+                />
+            <input  type="text"
+                required
+                className="form-control"
+                name="commune"
+                value={this.state.commune}
+                onChange={this.onChangeUsername}
+                placeholder="Commune"
+                />
+            <input  type="text"
+                required
+                className="form-control"
+                name="district"
+                value={this.state.district}
+                onChange={this.onChangeUsername}
+                placeholder="District"
+                />
+            <input  type="text"
+                required
+                className="form-control"
+                name="province"
+                value={this.state.province}
+                onChange={this.onChangeUsername}
+                placeholder="Province"
                 />
           </div>
 
