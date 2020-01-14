@@ -57,10 +57,11 @@ export default class RegisterUser extends Component {
     console.log(data)
     axios({
       method: 'post',
-      url: 'http://pichsaving.herokuapp.com/api/register',
+      url: 'https://pichsaving.herokuapp.com/api/register',
       data: data
     }).then(function (response) {
       console.log(response.data)
+        window.location = '/login';
     });
 
     e.preventDefault();

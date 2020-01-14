@@ -7,18 +7,14 @@ export default class LoginUser extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeDuration = this.onChangeDuration.bind(this);
-    this.onChangeDate = this.onChangeDate.bind(this);
+    this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+  
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      username: '',
-      description: '',
-      duration: 0,
-      date: new Date(),
-      users: []
+      password: '',
+      phoneNumber: ''
     }
   }
 
@@ -38,46 +34,38 @@ export default class LoginUser extends Component {
 
   }
 
-  onChangeUsername(e) {
+  onChangePhoneNumber(e) {
     this.setState({
-      username: e.target.value
+      phoneNumber: e.target.value
     })
   }
 
-  onChangeDescription(e) {
+  onChangePassword(e) {
     this.setState({
-      description: e.target.value
+      password: e.target.value
     })
   }
 
-  onChangeDuration(e) {
-    this.setState({
-      duration: e.target.value
-    })
-  }
-
-  onChangeDate(date) {
-    this.setState({
-      date: date
-    })
-  }
+ 
 
   onSubmit(e) {
     e.preventDefault();
 
-    const exercise = {
-      username: this.state.username,
-      description: this.state.description,
-      duration: this.state.duration,
-      date: this.state.date
+    const loginDetail = {
+      phoneNumber: this.state.phoneNumber,
+      password: this.state.password
     }
 
-    console.log(exercise);
+    console.log(loginDetail);
 
-    axios.post('http://localhost:5000/login', exercise)
-      .then(res => console.log(res.data));
+    axios.post('https://pichsaving.herokuapp.com/api/login', loginDetail)
+      .then(function (res) {
+        console.log(res.data)
+        window.location = '/';
+      })
+      .catch(e => console.log(e)) 
 
-    window.location = '/';
+    // 
   }
 
   render() {    
@@ -91,8 +79,8 @@ export default class LoginUser extends Component {
                 required
                 className="form-control"
                 name="phoneNumber"
-                value={this.state.last}
-                onChange={this.onChangeUsername}
+                value={this.state.phoneNumber}
+                onChange={this.onChangePhoneNumber}
                 />
         </div>
         <div className="form-group"> 
@@ -101,7 +89,7 @@ export default class LoginUser extends Component {
                 required
                 className="form-control"
                 value={this.state.password}
-                onChange={this.onChangeUsername}
+                onChange={this.onChangePassword}
                 />
           </div> 
         {/* <div className="form-group">
