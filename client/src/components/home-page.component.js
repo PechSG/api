@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import "./styles.css";
 import axios from 'axios';
 
 const Exercise = props => (
@@ -51,9 +52,11 @@ export default class ExercisesList extends Component {
   render() {
     return (
       <div>
+        <div className="background-fullscreen">
         <center>
-          <h1>Welcome to PichSG</h1>
+          <h1 className="white-text">Welcome to PichSG</h1>
           </center>
+          </div>
       </div>
     )
   }
