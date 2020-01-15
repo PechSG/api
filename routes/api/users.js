@@ -42,6 +42,10 @@ router.route('/register').post((req, res) => {
                     id: user._id,
                     profile: user.profile,
                     phoneNumber: user.phoneNumber,
+                    village: user.village,
+                    commune: user.commune,
+                    district: user.district,
+                    province: user.province,
                     createdAt: user.createdAt,
                     updatedAt: user.updatedAt
                 }
