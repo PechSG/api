@@ -50,9 +50,11 @@ export default class RegisterUser extends Component {
       phoneNumber: this.state.phoneNumber,
       password: this.state.password,      
       passwordConf: this.state.passwordConf,
-      address: this.state.address,
-      dateofbirth: this.state.address,
-      fammem: this.state.fammem,
+      village: this.state.village,
+      commune: this.state.commune,
+      district: this.state.district,
+      province: this.state.province,
+      dateofbirth: this.state.dateofbirth
     }
     console.log(data)
     axios({
@@ -61,7 +63,6 @@ export default class RegisterUser extends Component {
       data: data
     }).then(function (response) {
       console.log(response.data)
-        window.location = '/login';
     });
 
     e.preventDefault();
@@ -157,8 +158,8 @@ export default class RegisterUser extends Component {
                 required
                 className="form-control"
                 name="district"
-                value={this.state.district}
-                onChange={this.onChangeUsername}
+                  value={this.state.district}
+                  onChange={this.onChangeUsername}
                 placeholder="District"
                 />
             <input  type="text"
@@ -168,17 +169,6 @@ export default class RegisterUser extends Component {
                 value={this.state.province}
                 onChange={this.onChangeUsername}
                 placeholder="Province"
-                />
-          </div>
-
-          <div className="form-group"> 
-            <label>Family Members: </label>
-            <input  type="number"
-                required
-                className="form-control"
-                name="fammem"
-                value={this.state.fammem}
-                onChange={this.onChangeUsername}
                 />
           </div>
 
