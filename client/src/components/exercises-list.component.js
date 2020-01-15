@@ -53,13 +53,6 @@ export default class ExercisesList extends Component {
       <div>
         <center>
           <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
-          <h1>Welcome to PichSG</h1>
           </center>
       </div>
     )
