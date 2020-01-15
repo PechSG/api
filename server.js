@@ -20,6 +20,12 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 });
 
+app.use(cors({
+  origin:['http://localhost:8080'],
+  methods:['GET','POST'],
+  credentials: true // enable set cookie
+}));
+
 app.use(session({
   secret: 'work hard',
   resave: true,
