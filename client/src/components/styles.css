@@ -7,7 +7,7 @@
     background-image: url('https://news.tradimo.com/wp-content/uploads/2019/08/Save-Money-1.jpg');
 
 }
-.white-text {
+.animate-flicker {
     color: white;
     font-family: "Impact", fantasy;
     letter-spacing: 2px;
@@ -17,5 +17,10 @@
     color: blue;
     border-style: solid;
     border-width: 5px;
-    
+
+}
+.navbar-item {
+position: relative;
+left: 750px;
+border: 3px solid #3f00ff;
 }
