@@ -148,21 +148,31 @@ render() {
                   <Form>
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
-                   
+
+                    {/* Phone Number Element */}
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
+
+                        {/* Icon */}
                         <InputGroupText>
                           <i className="icon-user"></i>
                         </InputGroupText>
+
+                      {/* Input */}
                       </InputGroupAddon>
                       <Input type="number" placeholder="Phone Number" autoComplete="phoneNumber" />
                     </InputGroup>
-                    <InputGroup className="mb-4">
 
-                      <InputGroupAddon addonType="prepend">
+                    {/* Password Element */}
+                    <InputGroup className="mb-4">
+                     <InputGroupAddon addonType="prepend">
+
+                        {/* Icon */}
                         <InputGroupText>
                           <i className="icon-lock"></i>
                         </InputGroupText>
+                     
+                      {/* Input */}
                       </InputGroupAddon>
                       <Input type="password" placeholder="Password" autoComplete="current-password" />
                     </InputGroup>
@@ -175,16 +185,18 @@ render() {
                         <Button color="link" className="px-0">Forgot password?</Button>
                       </Col>
                     </Row>
+
                   </Form>
                 </CardBody>
               </Card>
+
               <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
                 <CardBody className="text-center">
                   <div>
                     <h2>Sign up</h2>
-                    <p>Hello Bong Vu</p>
+                    <p>Hit Bunleap!</p>
                     <Link to="/register">
-                      <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
+                      <Button color="primary" className="mt-3" active tabIndex={-1}>Hit Bunleap!</Button>
                     </Link>
                   </div>
                 </CardBody>
