@@ -14,18 +14,20 @@ export default class LoginUser extends Component {
 
     this.state = {
       password: '',
-      phoneNumber: ''
+      phoneNumber: '',
+      isLogined: false
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users/')
+    axios.get('http://localhost:8080/api/islogined')
       .then(response => {
         if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.username),
-            username: response.data[0].username
-          })
+          console.log(response)
+          // this.setState({
+          //   isLogined: response.data.map(user => user.username),
+          //   username: response.data[0].username
+          // })
         }
       })
       .catch((error) => {
@@ -58,14 +60,28 @@ export default class LoginUser extends Component {
 
     console.log(loginDetail);
 
-    axios.post('https://pichsaving.herokuapp.com/api/login', loginDetail)
-      .then(function (res) {
-        console.log(res.data)
-        window.location = '/';
-      })
-      .catch(e => console.log(e)) 
+ 
 
+  axios.post('http://localhost:8080/api/login', loginDetail)
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
     // 
+    axios.get('http://localhost:8080/api/islogined')
+    .then(function (response) {
+      // handle success
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
   }
 
   render() {    

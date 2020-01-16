@@ -3,9 +3,11 @@ let User = require('../../models/user.model');
 const ensureLoggedIn = require('./auth')
 const bcrypt = require('bcryptjs');
 
+router.get('/islogined', ensureLoggedIn, (req, res)=> {
+  res.json({msg: "authorized", status: "ok"})
+});
 
 router.get('/users/all', ensureLoggedIn, (req, res) => {
-    
     console.log(req.session);
       User.find()
         .then(users => res.json(users))
@@ -32,7 +34,7 @@ router.route('/register').post((req, res) => {
         .then(user => {
         if (user) return res.status(400).json({msg: "This Phone Number is already exist"});
 
-        const newUser = new User({profile: {name: {first, last}, birthDate, sex, profilePicUrl, address: {houseNum, streetNum, village, commune, district, province}}, phoneNumber, password});
+        const newUser = new User({profile: {name: {first, last}, birthDate, sex, profilePicUrl, address: {streetNum, village, commune, district, province}}, phoneNumber, password});
         
         newUser.save()
             .then((user) => {
