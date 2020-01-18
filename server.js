@@ -62,13 +62,6 @@ app.use(function (err, req, res, next) {
 // https://www.npmjs.com/package/cors#enabling-cors-pre-flight
 // app.options('*', cors())
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static('client/build'));
-
-  app.get("*", (req, res, next) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); // relative path
-  })
-}
 
 app.use((req, res, next) => {
 res.setHeader('Access-Control-Allow-Origin', 'http://pichsaving.herokuapp.com');
@@ -82,6 +75,15 @@ const usersRouter = require('./routes/api/users');
 
 app.use('/exercises', exercisesRouter);
 app.use('/api', usersRouter);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'));
+
+  app.get("*", (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); // relative path
+  })
+}
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
