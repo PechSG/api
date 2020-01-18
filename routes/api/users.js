@@ -3,9 +3,9 @@ let User = require('../../models/user.model');
 const ensureLoggedIn = require('./auth')
 const bcrypt = require('bcryptjs');
 
-router.get('/user/islogined', ensureLoggedIn, (req, res)=> {
+router.get('/user/islogined', (req, res)=> {
   console.log(req.session)
-  res.json({msg: "authorized", status: "ok"})
+  res.json({msg: "authorized", status: "ok", data: req.session})
 });
 
 router.get('/user/all', ensureLoggedIn, (req, res) => {
