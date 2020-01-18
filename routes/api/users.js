@@ -3,18 +3,18 @@ let User = require('../../models/user.model');
 const ensureLoggedIn = require('./auth')
 const bcrypt = require('bcryptjs');
 
-router.get('/islogined', ensureLoggedIn, (req, res)=> {
+router.get('/user/islogined', ensureLoggedIn, (req, res)=> {
   res.json({msg: "authorized", status: "ok"})
 });
 
-router.get('/users/all', ensureLoggedIn, (req, res) => {
+router.get('/user/all', ensureLoggedIn, (req, res) => {
     console.log(req.session);
       User.find()
         .then(users => res.json(users))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/register').post((req, res) => {
+router.route('/user/register').post((req, res) => {
     // get value from post body
     const { first, last, phoneNumber, password, passwordConf,  birthDate, sex, profilePicUrl, streetNum, village, commune, district, province } = req.body;
     console.log("hello")
@@ -56,7 +56,7 @@ router.route('/register').post((req, res) => {
 });
 
 // login
-router.post('/login', (req, res) => {
+router.post('/user/login', (req, res) => {
     const { phoneNumber, password } = req.body;
     
     if (!phoneNumber || !password) {
@@ -69,7 +69,9 @@ router.post('/login', (req, res) => {
               err.msg = 'Wrong phonenumber or password.'
               return res.send(err);
             } else {
-              req.session.userId = user._id;
+              console.log(user)
+              console.log(req.session)
+              
               return res.send("yay")
             }
           });
@@ -77,7 +79,7 @@ router.post('/login', (req, res) => {
 });
 
 // GET for logout logout
-router.get('/logout', function (req, res) {
+router.get('/user/logout', function (req, res) {
     if (req.session) {
       // delete session object
       console.log("Hi I'm here")

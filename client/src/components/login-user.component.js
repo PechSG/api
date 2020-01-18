@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+axios.defaults.withCredentials = true
 
 export default class LoginUser extends Component {
   constructor(props) {
@@ -22,19 +23,19 @@ export default class LoginUser extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/api/islogined')
-      .then(response => {
-        if (response.data.length > 0) {
-          console.log(response)
-          // this.setState({
-          //   isLogined: response.data.map(user => user.username),
-          //   username: response.data[0].username
-          // })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    // axios.get('http://localhost:8080/api/islogined')
+    //   .then(response => {
+    //     if (response.data.length > 0) {
+    //       console.log(response)
+    //       // this.setState({
+    //       //   isLogined: response.data.map(user => user.username),
+    //       //   username: response.data[0].username
+    //       // })
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
 
   }
 
@@ -62,7 +63,7 @@ export default class LoginUser extends Component {
 
     console.log(loginDetail);
 
-    axios.post('http://localhost:8080/api/login', loginDetail)
+    axios.post('http://pichsaving.herokuapp.com/api/user/login', {phoneNumber: 965587758, password: "liger72724"})
     .then(function (response) {
       console.log(response);
     })
@@ -70,15 +71,9 @@ export default class LoginUser extends Component {
       console.log(error);
     });
 
-  axios.post('http://localhost:8080/api/login', loginDetail)
-  .then(function (response) {
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+
     // 
-    axios.get('http://localhost:8080/api/islogined')
+    axios.get('http://pichsaving.herokuapp.com/api/user/islogined')
     .then(function (response) {
       // handle success
       console.log(response.data);
@@ -145,7 +140,7 @@ render() {
             <CardGroup>
               <Card className="p-4">
                 <CardBody>
-                  <Form>
+                  <Form onSubmit={this.onSubmit}>
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
 
