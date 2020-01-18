@@ -4,6 +4,7 @@ const ensureLoggedIn = require('./auth')
 const bcrypt = require('bcryptjs');
 
 router.get('/user/islogined', ensureLoggedIn, (req, res)=> {
+  console.log(req.session)
   res.json({msg: "authorized", status: "ok"})
 });
 
