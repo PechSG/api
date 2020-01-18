@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from "./components/navbar.component"
 
 // import LoginUser from "./components/login-user.component";
 // import RegisterUser from "./components/register-user.component";
 import './App.scss';
-
-
-// import { renderRoutes } from 'react-router-config';
-
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
@@ -30,7 +26,7 @@ class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <Router>
           <React.Suspense fallback={loading()}>
             <Switch>
             <Route exact path="/logins" name="Login age" render={props => <LoginUser {...props}/>} />
@@ -44,7 +40,7 @@ class App extends Component {
             
             </Switch>
           </React.Suspense>
-      </HashRouter>
+      </Router>
     );
   }
 }
